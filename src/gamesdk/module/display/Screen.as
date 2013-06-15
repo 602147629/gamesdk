@@ -111,6 +111,11 @@ package gamesdk.module.display {
 		 */
 		public function destory():void {
 			$fatherDisplay = null;
+			$dataCenter = null;
+			$moduleManager = null;
+			$configManager = null;
+			$reflector = null;
+			$screenManager = null;
 		}
 		
 		protected function switchScreen(screenType:uint):void {

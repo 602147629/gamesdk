@@ -5,7 +5,12 @@ package gamesdk.module.core {
 	 * @author hanxianming
 	 */
 	public interface IScreenManager {
-	
+		function get curScreen():IScreen;
+		function get curScreenType():uint;
+		function get screens():Vector.<IScreen>;
+		function getScreenById(screenType:uint):IScreen;
+		function switchScreen(screenType:uint):void;
+		function addScreen(screen:IScreen):IScreen;
+		function removeScreen(screen:IScreen):IScreen;
 	}
-
 }

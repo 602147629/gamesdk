@@ -27,7 +27,6 @@ package gamesdk.module.impl {
 			return _instance;
 		}
 		
-		/* INTERFACE module.core.IModuleConfigManager */
 		
 		/**
 		 * @inheritDoc

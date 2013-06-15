@@ -4,6 +4,8 @@ package gamesdk.module {
 	import gamesdk.module.core.IModuleDataCenter;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
+	import gamesdk.module.core.IScreenManager;
+	import gamesdk.module.display.ScreenManager;
 	import gamesdk.module.impl.ModuleConfigManager;
 	import gamesdk.module.impl.ModuleDataCenter;
 	import gamesdk.module.impl.ModuleManager;
@@ -28,6 +30,9 @@ package gamesdk.module {
 		 */
 		public static function launcher(root:Sprite, moduleConfig:Object, launcherComplete:Function):void {
 			ToolsMain.init(root.stage);
+			
+			GlobalsVars.rootSprite = root;
+			GlobalsVars.stage = root.stage;
 			
 			var url:String = root.loaderInfo.url;
 			reflector.isLocal = !(url.indexOf("file://") == -1);
@@ -74,6 +79,13 @@ package gamesdk.module {
 		 */
 		public static function get reflector():IReflector {
 			return Reflector.instance;
+		}
+		
+		/**
+		 * 屏幕管理器
+		 */
+		public static function get screenManager():IScreenManager {
+			return ScreenManager.instance;
 		}
 		
 		/**
@@ -129,6 +141,14 @@ package gamesdk.module {
 		 */
 		public static function deleteServerMsg(msgType:uint, handler:Function):void {
 			moduleManager.deleteServerMessage(msgType, handler);
+		}
+		
+		/**
+		 * 切换屏幕
+		 * @param	screenType 屏幕类型，需要自定义屏幕类型枚举。
+		 */
+		public static function switchScreen(screenType:uint):void {
+			screenManager.switchScreen(screenType);
 		}
 	}
 }

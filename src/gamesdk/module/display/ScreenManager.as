@@ -4,6 +4,7 @@ package gamesdk.module.display {
 	import gamesdk.module.core.IScreen;
 	import gamesdk.module.core.IScreenManager;
 	import gamesdk.module.GlobalsVars;
+	import gamesdk.tools.ToolsMain;
 	
 	/**
 	 * ...
@@ -69,7 +70,7 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function switchScreen(screenType:uint):void {
+		public function switchScreen(screenType:uint, gc:Boolean = true):void {
 			if (curScreenType == screenType)
 				return;
 			
@@ -81,6 +82,10 @@ package gamesdk.module.display {
 				_curScreen.removeFromParent();
 				_curScreen.dispose();
 			}
+			
+			if (gc)
+				ToolsMain.gc.gc();
+			
 			_curScreen = screen;
 			var rootSprite:Sprite = GlobalsVars.rootSprite;
 			_curScreen.fatherDisplay = rootSprite;

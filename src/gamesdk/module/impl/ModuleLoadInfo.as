@@ -106,7 +106,7 @@ package gamesdk.module.impl {
 				ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
 			}
 			
-			ToolsMain.log.info("模块([module]:" + _configInfo.moduleType + ")被卸载销毁执行中。");
+			ToolsMain.log.info("模块([module]:" + _configInfo.moduleType + ")被卸载销毁。");
 			
 			if (_loader.parent != null)
 				_loader.parent.removeChild(_loader);

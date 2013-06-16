@@ -118,8 +118,13 @@ package gamesdk.module.display {
 			$screenManager = null;
 		}
 		
-		protected function switchScreen(screenType:uint):void {
-			$screenManager.switchScreen(screenType);
+		/**
+		 * 切换屏幕
+		 * @param	screenType 屏幕类型，需要自定义屏幕类型枚举。
+		 * @param	gc 是否调用GC。
+		 */
+		protected function switchScreen(screenType:uint, gc:Boolean = true):void {
+			$screenManager.switchScreen(screenType, gc);
 		}
 	
 	}

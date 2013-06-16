@@ -226,7 +226,7 @@ package gamesdk.module.impl {
 		/**
 		 * @inheritDoc
 		 */
-		public function destoryModule(moduleType:String):void {
+		public function destoryModule(moduleType:String, gc:Boolean = false):void {
 			
 			if (_destoryModuleLock[moduleType] == true) {
 				ToolsMain.log.warn("尝试卸载的模块([module]:" + moduleType + ")正在执行卸载。");
@@ -238,7 +238,7 @@ package gamesdk.module.impl {
 			for (var i:int = 0; i < len; i++) {
 				var loadInfo:IModuleLoadInfo = _loadModules[i];
 				if (moduleType == loadInfo.configInfo.moduleType) {
-					loadInfo.dispose();
+					loadInfo.dispose(gc);
 					_destoryModuleLock[moduleType] = false;
 					_moduleMsgs[moduleType] = null;
 					_loadModules.splice(i, 1);

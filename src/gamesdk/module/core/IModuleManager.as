@@ -7,7 +7,7 @@ package gamesdk.module.core {
 	 */
 	public interface IModuleManager {
 		function loadModule(moduleType:String, loadComplete:Function = null, loadFail:Function = null, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void;
-		function destoryModule(moduleType:String):void;
+		function destoryModule(moduleType:String, gc:Boolean = false):void;
 		function getModuleByType(moduleType:String):IModule;
 		function getModuleByName(moduleType:String):IModule;
 		function getModuleProperties(moduleType:String, matchs:Class, properties:String, ... args):Object;

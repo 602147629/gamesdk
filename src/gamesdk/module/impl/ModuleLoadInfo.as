@@ -99,7 +99,7 @@ package gamesdk.module.impl {
 		/**
 		 * @inheritDoc
 		 */
-		public function dispose():void {
+		public function dispose(gc:Boolean = false):void {
 			if (GlobalsVars.dynamicLoad) {
 				try {
 					_loader.unloadAndStop(true);
@@ -107,12 +107,11 @@ package gamesdk.module.impl {
 					_loader.unload();
 					ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
 				}
-				if (_loader.parent != null)
-					_loader.parent.removeChild(_loader);
-			} else {
-				if (DisplayObject(module).parent != null)
-					DisplayObject(module).parent.removeChild(DisplayObject(module));
 			}
+			if (DisplayObject(module).parent != null)
+				DisplayObject(module).parent.removeChild(DisplayObject(module));
+			if (gc)
+				ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
 			
 			ToolsMain.log.info("模块([module]:" + _configInfo.moduleType + ")被卸载销毁。");
 			

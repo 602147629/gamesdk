@@ -18,7 +18,7 @@ package gamesdk.module.core {
 		function set loadComplete(value:Function):void;
 		function get progress():Function;
 		function set progress(value:Function):void;
-		function dispose():void;
+		function dispose(gc:Boolean = false):void;
 	}
 
 }

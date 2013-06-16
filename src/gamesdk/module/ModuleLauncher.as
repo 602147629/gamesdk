@@ -6,6 +6,7 @@ package gamesdk.module {
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
 	import gamesdk.module.display.ScreenManager;
+	import gamesdk.module.impl.ModuleBase;
 	import gamesdk.module.impl.ModuleConfigManager;
 	import gamesdk.module.impl.ModuleDataCenter;
 	import gamesdk.module.impl.ModuleManager;
@@ -28,6 +29,7 @@ package gamesdk.module {
 		 * @param	root 根显示对象，必须为应用程序的主入口。
 		 * @param	moduleConfig 模块配置文件，可以为XML配置，也可以为一个URL字符串地址。
 		 * @param	launcherComplete  模块启动完成。
+		 * @param	dynamicLoad  是否为动态加载模块到项目。如果为true则项目进行分模块加载，如果为false，则会不进行模块加载，但是需要手动在项目中编译模块到项目中。
 		 */
 		public static function launcher(root:Sprite, moduleConfig:Object, launcherComplete:Function, dynamicLoad:Boolean = true):void {
 			ToolsMain.init(root.stage);
@@ -53,6 +55,8 @@ package gamesdk.module {
 				if (launcherComplete != null)
 					launcherComplete.apply();
 			}
+			
+			ModuleBase;
 		}
 		
 		/**

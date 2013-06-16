@@ -55,16 +55,16 @@ package gamesdk.module.impl {
 				ToolsMain.log.error("[module]" + moduleType + "不能被添加到空对象中。");
 				return;
 			}
-			var child:* = null;
-			if (GlobalsVars.dynamicLoad) {
-				child = $loader;
-			} else {
-				child = this;
-			}
+			/*var child:* = this;
+			   if (GlobalsVars.dynamicLoad) {
+			   child = $loader;
+			   } else {
+			   child = this;
+			 }*/
 			if (index == -1) {
-				father.addChild(child);
+				father.addChild(this);
 			} else {
-				father.addChildAt(child, index);
+				father.addChildAt(this, index);
 			}
 		}
 		
@@ -94,8 +94,8 @@ package gamesdk.module.impl {
 			if (unload) {
 				$moduleManager.destoryModule(moduleType);
 			} else {
-				if ($loader.parent != null) {
-					$loader.parent.removeChild($loader);
+				if (this.parent != null) {
+					this.parent.removeChild(this);
 				}
 			}
 		}

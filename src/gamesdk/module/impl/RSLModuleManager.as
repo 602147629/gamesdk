@@ -34,13 +34,13 @@ package gamesdk.module.impl {
 	public class RSLModuleManager implements IModuleManager {
 		private static var _instance:IModuleManager;
 		
-		private var _loadModules:Vector.<IModuleLoadInfo>;
-		private var _moduleConfigManager:IModuleConfigManager;
-		private var _moduleDataCenter:IModuleDataCenter;
-		private var _reflector:IReflector;
-		private var _destoryModuleLock:Object;
-		private var _moduleMsgs:Object;
-		private var _serverMsgs:Dictionary;
+		protected var _loadModules:Vector.<IModuleLoadInfo>;
+		protected var _moduleConfigManager:IModuleConfigManager;
+		protected var _moduleDataCenter:IModuleDataCenter;
+		protected var _reflector:IReflector;
+		protected var _destoryModuleLock:Object;
+		protected var _moduleMsgs:Object;
+		protected var _serverMsgs:Dictionary;
 		
 		public function RSLModuleManager() {
 			init();
@@ -67,7 +67,7 @@ package gamesdk.module.impl {
 		/**
 		 * @inheritDoc
 		 */
-		public function loadModule(moduleType:String, loadComplete:Function, loadFail:Function, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void {
+		public function loadModule(moduleType:String, loadComplete:Function = null, loadFail:Function = null, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void {
 			
 			var module:IModule = getModuleByName(moduleType);
 			if (module != null) {
@@ -168,13 +168,13 @@ package gamesdk.module.impl {
 				moduleLoaderInfo.module = module;
 				module.loader = ldr;
 				module.init();
-				moduleLoaderInfo.loadComplete.call(null, moduleLoaderInfo.configInfo.moduleType, ldr.content, ldr);
+				moduleLoaderInfo.loadComplete.call(null, moduleLoaderInfo.configInfo.moduleType, ldr.content);
 			} else {
 				ToolsMain.log.warn("([module]:" + moduleLoaderInfo.configInfo.moduleName + ")模块未实现IModule接口，已直接运行");
 			}
 		}
 		
-		private function moduleDataInject(module:IModule):void {
+		protected function moduleDataInject(module:IModule):void {
 			var typeXML:XML = _reflector.getDescribeType(module);
 			for each (var node:XML in typeXML.*.(name() == 'variable' || name() == 'accessor').metadata.(@name == 'InjectData')) {
 				var propertyType:String = node.parent().@type.toString();

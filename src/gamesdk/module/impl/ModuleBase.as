@@ -9,6 +9,7 @@ package gamesdk.module.impl {
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
+	import gamesdk.module.GlobalsVars;
 	import gamesdk.module.ModuleLauncher;
 	import gamesdk.tools.ToolsMain;
 	
@@ -54,10 +55,16 @@ package gamesdk.module.impl {
 				ToolsMain.log.error("[module]" + moduleType + "不能被添加到空对象中。");
 				return;
 			}
-			if (index == -1) {
-				father.addChild($loader);
+			var child:* = null;
+			if (GlobalsVars.dynamicLoad) {
+				child = $loader;
 			} else {
-				father.addChildAt($loader, index);
+				child = this;
+			}
+			if (index == -1) {
+				father.addChild(child);
+			} else {
+				father.addChildAt(child, index);
 			}
 		}
 		

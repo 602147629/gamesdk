@@ -4,6 +4,7 @@ package gamesdk.module.impl {
 	import flash.display.Loader;
 	import gamesdk.module.core.IModuleConfig;
 	import gamesdk.module.core.IModuleLoadInfo;
+	import gamesdk.module.GlobalsVars;
 	import gamesdk.tools.ToolsMain;
 	
 	/**
@@ -99,17 +100,21 @@ package gamesdk.module.impl {
 		 * @inheritDoc
 		 */
 		public function dispose():void {
-			try {
-				_loader.unloadAndStop(true);
-			} catch (e:Error) {
-				_loader.unload();
-				ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
+			if (GlobalsVars.dynamicLoad) {
+				try {
+					_loader.unloadAndStop(true);
+				} catch (e:Error) {
+					_loader.unload();
+					ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
+				}
+				if (_loader.parent != null)
+					_loader.parent.removeChild(_loader);
+			} else {
+				if (DisplayObject(module).parent != null)
+					DisplayObject(module).parent.removeChild(DisplayObject(module));
 			}
 			
 			ToolsMain.log.info("模块([module]:" + _configInfo.moduleType + ")被卸载销毁。");
-			
-			if (_loader.parent != null)
-				_loader.parent.removeChild(_loader);
 			
 			if (_module) {
 				_module.exit();

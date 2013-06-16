@@ -9,6 +9,7 @@ package gamesdk.module {
 		
 		public static var rootSprite:Sprite;
 		public static var stage:Stage;
+		public static var dynamicLoad:Boolean;
 		
 		public function GlobalsVars() {
 		

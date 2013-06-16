@@ -8,6 +8,7 @@ package gamesdk.module {
 	import gamesdk.module.display.ScreenManager;
 	import gamesdk.module.impl.ModuleConfigManager;
 	import gamesdk.module.impl.ModuleDataCenter;
+	import gamesdk.module.impl.ModuleManager;
 	import gamesdk.module.impl.RSLModuleManager;
 	import gamesdk.module.impl.Reflector;
 	import gamesdk.tools.handlers.Handler;
@@ -28,11 +29,12 @@ package gamesdk.module {
 		 * @param	moduleConfig 模块配置文件，可以为XML配置，也可以为一个URL字符串地址。
 		 * @param	launcherComplete  模块启动完成。
 		 */
-		public static function launcher(root:Sprite, moduleConfig:Object, launcherComplete:Function):void {
+		public static function launcher(root:Sprite, moduleConfig:Object, launcherComplete:Function, dynamicLoad:Boolean = true):void {
 			ToolsMain.init(root.stage);
 			
 			GlobalsVars.rootSprite = root;
 			GlobalsVars.stage = root.stage;
+			GlobalsVars.dynamicLoad = dynamicLoad;
 			
 			var url:String = root.loaderInfo.url;
 			reflector.isLocal = !(url.indexOf("file://") == -1);
@@ -64,7 +66,10 @@ package gamesdk.module {
 		 * 模块管理器。
 		 */
 		public static function get moduleManager():IModuleManager {
-			return RSLModuleManager.instance;
+			if (GlobalsVars.dynamicLoad) {
+				return RSLModuleManager.instance;
+			}
+			return ModuleManager.instance;
 		}
 		
 		/**

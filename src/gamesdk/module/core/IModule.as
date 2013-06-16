@@ -1,8 +1,6 @@
 package gamesdk.module.core {
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Loader;
-	import flash.events.IEventDispatcher;
-	import mx.modules.ModuleBase;
 	
 	/**
 	 * 模块接口

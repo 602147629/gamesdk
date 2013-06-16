@@ -31,7 +31,7 @@ package gamesdk.module.impl {
 	 * 模块管理器
 	 * @author hanxianming
 	 */
-	public class ModuleManager implements IModuleManager {
+	public class RSLModuleManager implements IModuleManager {
 		private static var _instance:IModuleManager;
 		
 		private var _loadModules:Vector.<IModuleLoadInfo>;
@@ -42,7 +42,7 @@ package gamesdk.module.impl {
 		private var _moduleMsgs:Object;
 		private var _serverMsgs:Dictionary;
 		
-		public function ModuleManager() {
+		public function RSLModuleManager() {
 			init();
 		}
 		
@@ -59,7 +59,7 @@ package gamesdk.module.impl {
 		
 		public static function get instance():IModuleManager {
 			if (_instance == null) {
-				_instance = new ModuleManager();
+				_instance = new RSLModuleManager();
 			}
 			return _instance;
 		}

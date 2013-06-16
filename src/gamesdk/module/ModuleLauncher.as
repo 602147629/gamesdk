@@ -8,7 +8,7 @@ package gamesdk.module {
 	import gamesdk.module.display.ScreenManager;
 	import gamesdk.module.impl.ModuleConfigManager;
 	import gamesdk.module.impl.ModuleDataCenter;
-	import gamesdk.module.impl.ModuleManager;
+	import gamesdk.module.impl.RSLModuleManager;
 	import gamesdk.module.impl.Reflector;
 	import gamesdk.tools.handlers.Handler;
 	import gamesdk.tools.managers.ResType;
@@ -64,7 +64,7 @@ package gamesdk.module {
 		 * 模块管理器。
 		 */
 		public static function get moduleManager():IModuleManager {
-			return ModuleManager.instance;
+			return RSLModuleManager.instance;
 		}
 		
 		/**

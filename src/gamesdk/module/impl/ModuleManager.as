@@ -166,6 +166,7 @@ package gamesdk.module.impl {
 				var module:IModule = ldr.content as IModule;
 				moduleDataInject(module);
 				moduleLoaderInfo.module = module;
+				module.loader = ldr;
 				module.init();
 				moduleLoaderInfo.loadComplete.call(null, moduleLoaderInfo.configInfo.moduleType, ldr.content, ldr);
 			} else {

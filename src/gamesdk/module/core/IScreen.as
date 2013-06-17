@@ -14,9 +14,9 @@ package gamesdk.module.core {
 		function set fatherDisplay(value:DisplayObjectContainer):void;
 		
 		function show():void;
-		function dispose():void;
+		function disposeScreen():void;
 		function removeAllDisplay():void;
-		function removeFromParent():void;
+		function removeScreenFromParent():void;
 		function destory():void;
 		function deleteFromScreens():void;
 	}

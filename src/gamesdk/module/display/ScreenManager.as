@@ -79,8 +79,8 @@ package gamesdk.module.display {
 				return;
 			
 			if (_curScreen != null) {
-				_curScreen.removeFromParent();
-				_curScreen.dispose();
+				_curScreen.removeScreenFromParent();
+				_curScreen.disposeScreen();
 			}
 			
 			if (gc)
@@ -117,9 +117,9 @@ package gamesdk.module.display {
 			var len:int = _screens.length;
 			for (var i:int = 0; i < len; i++) {
 				if (screen == _screens[i]) {
-					screen.removeFromParent();
+					screen.removeScreenFromParent();
 					screen.removeAllDisplay();
-					screen.dispose();
+					screen.disposeScreen();
 					screen.destory();
 					return _screens.splice(i, 1)[0];
 				}

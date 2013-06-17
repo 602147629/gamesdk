@@ -80,7 +80,7 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function dispose():void {
+		public function disposeScreen():void {
 		
 		}
 		
@@ -94,7 +94,7 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function removeFromParent():void {
+		public function removeScreenFromParent():void {
 			if (parent != null)
 				parent.removeChild(this);
 		}

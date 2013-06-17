@@ -78,7 +78,7 @@ package gamesdk.module.impl {
 		/**
 		 * @inheritDoc
 		 */
-		public function dispose():void {
+		public function disposeModule():void {
 			$dataCenter = null;
 			$moduleManager = null;
 			$configManager = null;

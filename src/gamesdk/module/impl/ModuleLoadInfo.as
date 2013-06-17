@@ -117,7 +117,7 @@ package gamesdk.module.impl {
 			
 			if (_module) {
 				_module.exit();
-				_module.dispose();
+				_module.disposeModule();
 			}
 			
 			this._loader = null;

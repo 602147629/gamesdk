@@ -11,7 +11,7 @@ package gamesdk.module.core {
 		function init():void;
 		function show(father:DisplayObjectContainer, index:int = -1):void;
 		function exit():void;
-		function dispose():void;
+		function disposeModule():void;
 		function get loader():Loader;
 		function set loader(value:Loader):void;
 	}

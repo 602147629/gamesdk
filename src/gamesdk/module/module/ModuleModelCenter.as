@@ -34,7 +34,7 @@ package gamesdk.module.module {
 		/**
 		 * @inheritDoc
 		 */
-		public function registDataProxyClass(whenAskedFor:Class, useinstanceClass:Class, named:String = ""):IModuleModelCenter {
+		public function registClass(whenAskedFor:Class, useinstanceClass:Class, named:String = ""):IModuleModelCenter {
 			var requestName:String = getQualifiedClassName(whenAskedFor);
 			_classFors[requestName + '#' + named] = useinstanceClass;
 			return this;
@@ -43,7 +43,7 @@ package gamesdk.module.module {
 		/**
 		 * @inheritDoc
 		 */
-		public function registDataProxyInstance(whenAskedFor:Class, instance:Object, named:String = ""):IModuleModelCenter {
+		public function registInstance(whenAskedFor:Class, instance:Object, named:String = ""):IModuleModelCenter {
 			var requestName:String = getQualifiedClassName(whenAskedFor);
 			_useInstances[requestName + '#' + named] = instance;
 			return this;
@@ -52,7 +52,7 @@ package gamesdk.module.module {
 		/**
 		 * @inheritDoc
 		 */
-		public function deleteDataProxyClass(whenAskedFor:Class, named:String = ""):IModuleModelCenter {
+		public function deleteClass(whenAskedFor:Class, named:String = ""):IModuleModelCenter {
 			var requestName:String = getQualifiedClassName(whenAskedFor);
 			_classFors[requestName + '#' + named] = null;
 			return this;
@@ -61,7 +61,7 @@ package gamesdk.module.module {
 		/**
 		 * @inheritDoc
 		 */
-		public function deleteDataProxyInstance(request:Object, named:String = ""):IModuleModelCenter {
+		public function deleteInstance(request:Object, named:String = ""):IModuleModelCenter {
 			var requestName:String = getQualifiedClassName(request);
 			_useInstances[requestName + '#' + named] = null;
 			return this;

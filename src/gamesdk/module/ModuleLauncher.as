@@ -1,5 +1,6 @@
 package gamesdk.module {
-	import flash.display.Sprite;
+	import flash.display.DisplayObject;
+	
 	import gamesdk.module.core.IModuleConfigManager;
 	import gamesdk.module.core.IModuleDataCenter;
 	import gamesdk.module.core.IModuleManager;
@@ -12,9 +13,15 @@ package gamesdk.module {
 	import gamesdk.module.impl.ModuleManager;
 	import gamesdk.module.impl.RSLModuleManager;
 	import gamesdk.module.impl.Reflector;
+	import gamesdk.tools.ToolsMain;
 	import gamesdk.tools.handlers.Handler;
 	import gamesdk.tools.managers.ResType;
-	import gamesdk.tools.ToolsMain;
+	CONFIG::flash_display {
+		import flash.display.Sprite;
+	}
+	CONFIG::starling_display {
+		import starling.display.Sprite;
+	}
 	
 	/**
 	 * 模块启动器
@@ -31,14 +38,14 @@ package gamesdk.module {
 		 * @param	launcherComplete  模块启动完成。
 		 * @param	dynamicLoad  是否为动态加载模块到项目。如果为true则项目进行分模块加载，如果为false，则会不进行模块加载，但是需要手动在项目中编译模块到项目中。
 		 */
-		public static function launcher(root:Sprite, moduleConfig:Object, launcherComplete:Function, dynamicLoad:Boolean = true):void {
-			ToolsMain.init(root.stage);
+		public static function launcher(nativeroot:DisplayObject, root:Sprite, moduleConfig:Object, launcherComplete:Function, dynamicLoad:Boolean = true):void {
+			ToolsMain.init(nativeroot.stage);
 			
 			GlobalsVars.rootSprite = root;
-			GlobalsVars.stage = root.stage;
+			GlobalsVars.nativeStage = nativeroot.stage;
 			GlobalsVars.dynamicLoad = dynamicLoad;
 			
-			var url:String = root.loaderInfo.url;
+			var url:String = nativeroot.loaderInfo.url;
 			reflector.isLocal = !(url.indexOf("file://") == -1);
 			
 			if (moduleConfig is XML) {

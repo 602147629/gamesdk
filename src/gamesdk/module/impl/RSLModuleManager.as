@@ -3,7 +3,6 @@ package gamesdk.module.impl {
 	import flash.display.LoaderInfo;
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
-	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
 	import flash.events.ProgressEvent;
 	import flash.events.UncaughtErrorEvent;
@@ -14,6 +13,7 @@ package gamesdk.module.impl {
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
+	
 	import gamesdk.module.constants.AppDomainType;
 	import gamesdk.module.core.IModule;
 	import gamesdk.module.core.IModuleConfig;
@@ -22,10 +22,9 @@ package gamesdk.module.impl {
 	import gamesdk.module.core.IModuleLoadInfo;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
+	import gamesdk.tools.ToolsMain;
 	import gamesdk.tools.handlers.Handler;
 	import gamesdk.tools.managers.ResType;
-	import gamesdk.tools.ToolsConfig;
-	import gamesdk.tools.ToolsMain;
 	
 	/**
 	 * 模块管理器
@@ -174,13 +173,14 @@ package gamesdk.module.impl {
 			}
 		}
 		
-		protected function moduleDataInject(module:IModule):void {
-			var typeXML:XML = _reflector.getDescribeType(module);
+		protected function moduleDataInject(obj:Object):void {
+			var typeXML:XML = _reflector.getDescribeType(obj);
 			for each (var node:XML in typeXML.*.(name() == 'variable' || name() == 'accessor').metadata.(@name == 'InjectData')) {
 				var propertyType:String = node.parent().@type.toString();
 				var propertyName:String = node.parent().@name.toString();
 				var injectionName:String = node.arg.attribute('value').toString();
-				module[propertyName] = _moduleDataCenter.getDataProxyByObject(_reflector.getDefinition(propertyType), injectionName);
+				obj[propertyName] = _moduleDataCenter.getDataProxyByObject(_reflector.getDefinition(propertyType), injectionName);
+				moduleDataInject(obj[propertyName]);
 			}
 		}
 		

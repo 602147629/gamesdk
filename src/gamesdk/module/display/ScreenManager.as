@@ -1,10 +1,14 @@
 package gamesdk.module.display {
-	import flash.display.DisplayObject;
-	import flash.display.Sprite;
+	import gamesdk.module.GlobalsVars;
 	import gamesdk.module.core.IScreen;
 	import gamesdk.module.core.IScreenManager;
-	import gamesdk.module.GlobalsVars;
 	import gamesdk.tools.ToolsMain;
+	CONFIG::flash_display {
+		import flash.display.DisplayObject;
+	}
+	CONFIG::starling_display {
+		import starling.display.DisplayObject;
+	}
 	
 	/**
 	 * ...
@@ -87,9 +91,8 @@ package gamesdk.module.display {
 				ToolsMain.gc.gc();
 			
 			_curScreen = screen;
-			var rootSprite:Sprite = GlobalsVars.rootSprite;
-			_curScreen.fatherDisplay = rootSprite;
-			rootSprite.addChild(DisplayObject(_curScreen));
+			_curScreen.fatherDisplay = GlobalsVars.rootSprite;
+			GlobalsVars.rootSprite.addChild(DisplayObject(_curScreen));
 			_curScreen.show();
 		}
 		

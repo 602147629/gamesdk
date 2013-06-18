@@ -1,17 +1,23 @@
 package gamesdk.module.impl {
-	import flash.display.DisplayObjectContainer;
 	import flash.display.Loader;
-	import flash.display.Sprite;
-	import flash.events.MouseEvent;
+	
+	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModule;
 	import gamesdk.module.core.IModuleConfigManager;
 	import gamesdk.module.core.IModuleDataCenter;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
-	import gamesdk.module.GlobalsVars;
-	import gamesdk.module.ModuleLauncher;
 	import gamesdk.tools.ToolsMain;
+	
+	CONFIG::flash_display {
+		import flash.display.DisplayObjectContainer;
+		import flash.display.Sprite;
+	}
+	CONFIG::starling_display {
+		import starling.display.DisplayObjectContainer;
+		import starling.display.Sprite;
+	}
 	
 	/**
 	 * 模块基类。
@@ -24,20 +30,22 @@ package gamesdk.module.impl {
 		protected var $reflector:IReflector;
 		protected var $screenManager:IScreenManager;
 		protected var $loader:Loader;
+		protected var $moduleType:String = "ModuleBase";
 		
-		public function ModuleBase() {
+		public function ModuleBase(moduleType:String) {
 			$dataCenter = ModuleLauncher.dataCenter;
 			$moduleManager = ModuleLauncher.moduleManager;
 			$configManager = ModuleLauncher.configManager;
 			$reflector = ModuleLauncher.reflector;
 			$screenManager = ModuleLauncher.screenManager;
+			$moduleType = moduleType;
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get moduleType():String {
-			return "ModuleBase";
+			return $moduleType;
 		}
 		
 		/**
@@ -90,7 +98,7 @@ package gamesdk.module.impl {
 		/**
 		 * @inheritDoc
 		 */
-		public function removeFromParent(unload:Boolean = false):void {
+		public function removeModluleFromParent(unload:Boolean = false):void {
 			if (unload) {
 				$moduleManager.destoryModule(moduleType);
 			} else {

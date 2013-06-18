@@ -1,5 +1,10 @@
 package gamesdk.module {
-	import flash.display.Sprite;
+	CONFIG::flash_display {
+		import flash.display.Sprite;
+	}
+	CONFIG::starling_display {
+		import starling.display.Sprite;
+	}
 	import flash.display.Stage;
 	
 	/**
@@ -8,7 +13,7 @@ package gamesdk.module {
 	public class GlobalsVars {
 		
 		public static var rootSprite:Sprite;
-		public static var stage:Stage;
+		public static var nativeStage:Stage;
 		public static var dynamicLoad:Boolean;
 		
 		public function GlobalsVars() {

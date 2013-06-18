@@ -1,13 +1,19 @@
 package gamesdk.module.display {
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
+	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModuleConfigManager;
 	import gamesdk.module.core.IModuleDataCenter;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreen;
 	import gamesdk.module.core.IScreenManager;
-	import gamesdk.module.ModuleLauncher;
+	CONFIG::flash_display {
+		import flash.display.DisplayObjectContainer;
+		import flash.display.Sprite;
+	}
+	CONFIG::starling_display {
+		import starling.display.DisplayObjectContainer;
+		import starling.display.Sprite;
+	}
 	
 	/**
 	 * ...

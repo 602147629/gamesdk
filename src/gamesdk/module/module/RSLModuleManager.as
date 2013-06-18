@@ -36,7 +36,7 @@ package gamesdk.module.module {
 		
 		protected var _loadModules:Vector.<IModuleLoadInfo>;
 		protected var _moduleConfigManager:IModuleConfigManager;
-		protected var _moduleDataCenter:IModuleModelCenter;
+		protected var _moduleModelCenter:IModuleModelCenter;
 		protected var _reflector:IReflector;
 		protected var _destoryModuleLock:Object;
 		protected var _moduleMsgs:Object;
@@ -50,7 +50,7 @@ package gamesdk.module.module {
 			
 			_moduleConfigManager = ModuleConfigManager.instance;
 			_reflector = Reflector.instance;
-			_moduleDataCenter = ModuleModelCenter.instance;
+			_moduleModelCenter = ModuleModelCenter.instance;
 			_loadModules = new Vector.<IModuleLoadInfo>();
 			_destoryModuleLock = {};
 			_moduleMsgs = {};
@@ -175,14 +175,7 @@ package gamesdk.module.module {
 		}
 		
 		protected function moduleDataInject(obj:Object):void {
-			var typeXML:XML = _reflector.getDescribeType(obj);
-			for each (var node:XML in typeXML.*.(name() == 'variable' || name() == 'accessor').metadata.(@name == 'InjectData')) {
-				var propertyType:String = node.parent().@type.toString();
-				var propertyName:String = node.parent().@name.toString();
-				var injectionName:String = node.arg.attribute('value').toString();
-				obj[propertyName] = _moduleDataCenter.getDataProxyByObject(_reflector.getDefinition(propertyType), injectionName);
-				moduleDataInject(obj[propertyName]);
-			}
+			_moduleModelCenter.intoInjectObject(obj);
 		}
 		
 		/**

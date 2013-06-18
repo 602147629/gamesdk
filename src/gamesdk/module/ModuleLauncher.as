@@ -69,7 +69,7 @@ package gamesdk.module {
 		/**
 		 * 模块数据管理中心。
 		 */
-		public static function get dataCenter():IModuleModelCenter {
+		public static function get modelCenter():IModuleModelCenter {
 			return ModuleModelCenter.instance;
 		}
 		

@@ -32,7 +32,7 @@ package gamesdk.module.core {
 		 */
 		function deleteDataProxyInstance(request:Object, named:String = ""):void;
 		/**
-		 * 根据类的应用程序域名称获取注册的对象实例。例如gamesdk.module.core.ModuleDataCenter。
+		 * 根据类的应用程序域名称获取注册的对象实例。例如gamesdk.module.core.ModuleModelCenter。
 		 * @param	requestName 应用程序域名称
 		 * @param	named 注册的名称
 		 * @return 注册的对象实例。
@@ -45,7 +45,10 @@ package gamesdk.module.core {
 		 * @return 注册的对象实例。
 		 */
 		function getDataProxyByObject(whenAskedFor:Object, named:String = ""):Object;
-	
+		/**
+		 * 注入数据对象
+		 * @param	obj 注入对象。
+		 */
+		function intoInjectObject(obj:Object):void;
 	}
-
 }

@@ -108,6 +108,7 @@ package gamesdk.module.display {
 					return screen;
 				}
 			}
+			
 			return _screens[len] = screen;
 		}
 		

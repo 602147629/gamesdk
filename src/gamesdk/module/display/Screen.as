@@ -24,7 +24,7 @@ package gamesdk.module.display {
 		protected var $screenType:uint;
 		protected var $screenName:String;
 		protected var $fatherDisplay:DisplayObjectContainer;
-		protected var $dataCenter:IModuleModelCenter;
+		protected var $modelCenter:IModuleModelCenter;
 		protected var $moduleManager:IModuleManager;
 		protected var $configManager:IModuleConfigManager;
 		protected var $reflector:IReflector;
@@ -34,7 +34,7 @@ package gamesdk.module.display {
 			this.$screenType = screenType;
 			this.$screenName = screenName;
 			
-			$dataCenter = ModuleLauncher.dataCenter;
+			$modelCenter = ModuleLauncher.modelCenter;
 			$moduleManager = ModuleLauncher.moduleManager;
 			$configManager = ModuleLauncher.configManager;
 			$reflector = ModuleLauncher.reflector;
@@ -117,7 +117,7 @@ package gamesdk.module.display {
 		 */
 		public function destory():void {
 			$fatherDisplay = null;
-			$dataCenter = null;
+			$modelCenter = null;
 			$moduleManager = null;
 			$configManager = null;
 			$reflector = null;

@@ -1,5 +1,6 @@
 package gamesdk.module.module {
 	import flash.utils.getQualifiedClassName;
+	import gamesdk.module.ModuleLauncher;
 	
 	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.tools.ToolsMain;
@@ -88,6 +89,20 @@ package gamesdk.module.module {
 		 */
 		public function getDataProxyByObject(whenAskedFor:Object, named:String = ""):Object {
 			return getDataProxyByClassName(getQualifiedClassName(whenAskedFor), named);
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function intoInjectObject(obj:Object):void {
+			var typeXML:XML = ModuleLauncher.reflector.getDescribeType(obj);
+			for each (var node:XML in typeXML.*.(name() == 'variable' || name() == 'accessor').metadata.(@name == 'InjectData')) {
+				var propertyType:String = node.parent().@type.toString();
+				var propertyName:String = node.parent().@name.toString();
+				var injectionName:String = node.arg.attribute('value').toString();
+				obj[propertyName] = getDataProxyByObject(ModuleLauncher.reflector.getDefinition(propertyType), injectionName);
+				intoInjectObject(obj[propertyName]);
+			}
 		}
 	}
 }

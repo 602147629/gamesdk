@@ -24,7 +24,7 @@ package gamesdk.module.module {
 	 * @author hanxianming
 	 */
 	public class ModuleBase extends Sprite implements IModule {
-		protected var $dataCenter:IModuleModelCenter;
+		protected var $modelCenter:IModuleModelCenter;
 		protected var $moduleManager:IModuleManager;
 		protected var $configManager:IModuleConfigManager;
 		protected var $reflector:IReflector;
@@ -33,7 +33,7 @@ package gamesdk.module.module {
 		protected var $moduleType:String = "ModuleBase";
 		
 		public function ModuleBase(moduleType:String) {
-			$dataCenter = ModuleLauncher.dataCenter;
+			$modelCenter = ModuleLauncher.modelCenter;
 			$moduleManager = ModuleLauncher.moduleManager;
 			$configManager = ModuleLauncher.configManager;
 			$reflector = ModuleLauncher.reflector;
@@ -87,7 +87,7 @@ package gamesdk.module.module {
 		 * @inheritDoc
 		 */
 		public function disposeModule():void {
-			$dataCenter = null;
+			$modelCenter = null;
 			$moduleManager = null;
 			$configManager = null;
 			$reflector = null;

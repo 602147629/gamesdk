@@ -2,6 +2,7 @@ package gamesdk.module.display {
 	import gamesdk.module.GlobalsVars;
 	import gamesdk.module.core.IScreen;
 	import gamesdk.module.core.IScreenManager;
+	import gamesdk.module.ModuleLauncher;
 	import gamesdk.tools.ToolsMain;
 	CONFIG::flash_display {
 		import flash.display.DisplayObject;
@@ -108,7 +109,7 @@ package gamesdk.module.display {
 					return screen;
 				}
 			}
-			
+			ModuleLauncher.modelCenter.intoInjectObject(screen);
 			return _screens[len] = screen;
 		}
 		

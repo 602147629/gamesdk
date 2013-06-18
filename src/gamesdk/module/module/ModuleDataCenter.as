@@ -1,4 +1,4 @@
-package gamesdk.module.impl {
+package gamesdk.module.module {
 	import flash.utils.getQualifiedClassName;
 	
 	import gamesdk.module.core.IModuleDataCenter;

@@ -1,4 +1,4 @@
-package gamesdk.module.impl {
+package gamesdk.module.module {
 	import flash.utils.ByteArray;
 	
 	import gamesdk.module.core.IModule;

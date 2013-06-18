@@ -7,12 +7,12 @@ package gamesdk.module {
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
 	import gamesdk.module.display.ScreenManager;
-	import gamesdk.module.impl.ModuleBase;
-	import gamesdk.module.impl.ModuleConfigManager;
-	import gamesdk.module.impl.ModuleDataCenter;
-	import gamesdk.module.impl.ModuleManager;
-	import gamesdk.module.impl.RSLModuleManager;
-	import gamesdk.module.impl.Reflector;
+	import gamesdk.module.module.ModuleBase;
+	import gamesdk.module.module.ModuleConfigManager;
+	import gamesdk.module.module.ModuleDataCenter;
+	import gamesdk.module.module.ModuleManager;
+	import gamesdk.module.module.RSLModuleManager;
+	import gamesdk.module.reflection.Reflector;
 	import gamesdk.tools.ToolsMain;
 	import gamesdk.tools.handlers.Handler;
 	import gamesdk.tools.managers.ResType;

@@ -1,4 +1,4 @@
-package gamesdk.module.impl {
+package gamesdk.module.module {
 	import flash.display.Loader;
 	
 	import gamesdk.module.GlobalsVars;

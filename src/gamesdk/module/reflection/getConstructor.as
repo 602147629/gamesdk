@@ -5,7 +5,7 @@
  * in accordance with the terms of the license agreement accompanying it.
  */
 
-package gamesdk.module.impl
+package gamesdk.module.reflection
 {
 	import flash.utils.Proxy;
 	import flash.utils.getDefinitionByName;

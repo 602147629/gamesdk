@@ -1,4 +1,4 @@
-package gamesdk.module.impl {
+package gamesdk.module.reflection {
 	import flash.system.ApplicationDomain;
 	import flash.utils.describeType;
 	import flash.utils.getDefinitionByName;

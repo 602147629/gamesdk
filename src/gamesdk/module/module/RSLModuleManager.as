@@ -1,4 +1,4 @@
-package gamesdk.module.impl {
+package gamesdk.module.module {
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
 	import flash.events.ErrorEvent;
@@ -25,6 +25,7 @@ package gamesdk.module.impl {
 	import gamesdk.tools.ToolsMain;
 	import gamesdk.tools.handlers.Handler;
 	import gamesdk.tools.managers.ResType;
+	import gamesdk.module.reflection.Reflector;
 	
 	/**
 	 * 模块管理器

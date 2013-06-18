@@ -24,7 +24,7 @@ package gamesdk.module.module {
 			return _instance;
 		}
 		
-		override public function loadModule(moduleType:String, loadComplete:Function = null, loadFail:Function = null, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void {
+		override public function installModule(moduleType:String, loadComplete:Function = null, loadFail:Function = null, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void {
 			var module:IModule = getModuleByName(moduleType);
 			if (module != null) {
 				ToolsMain.log.warn("加载的([module]:" + moduleType + ")已经在运行中！");

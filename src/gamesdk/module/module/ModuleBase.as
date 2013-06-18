@@ -100,7 +100,7 @@ package gamesdk.module.module {
 		 */
 		public function removeModluleFromParent(unload:Boolean = false):void {
 			if (unload) {
-				$moduleManager.destoryModule(moduleType);
+				$moduleManager.uninstallModule(moduleType);
 			} else {
 				if (this.parent != null) {
 					this.parent.removeChild(this);

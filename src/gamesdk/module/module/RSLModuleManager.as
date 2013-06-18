@@ -67,7 +67,7 @@ package gamesdk.module.module {
 		/**
 		 * @inheritDoc
 		 */
-		public function loadModule(moduleType:String, loadComplete:Function = null, loadFail:Function = null, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void {
+		public function installModule(moduleType:String, loadComplete:Function = null, loadFail:Function = null, byteArray:ByteArray = null, startLoadModule:Function = null, progress:Function = null):void {
 			
 			var module:IModule = getModuleByName(moduleType);
 			if (module != null) {
@@ -84,7 +84,7 @@ package gamesdk.module.module {
 			if (byteArray == null && moduleConfig.isByteArray) {
 				ToolsMain.loader.load(moduleConfig.moduleUrl, ResType.BYTE, new Handler(function(byte:ByteArray):void {
 						if (byte != null) {
-							loadModule(moduleType, loadComplete, loadFail, byte, startLoadModule, progress);
+							installModule(moduleType, loadComplete, loadFail, byte, startLoadModule, progress);
 						} else {
 							if (loadFail != null) {
 								if (loadFail.length == 0) {
@@ -227,7 +227,7 @@ package gamesdk.module.module {
 		/**
 		 * @inheritDoc
 		 */
-		public function destoryModule(moduleType:String, gc:Boolean = false):void {
+		public function uninstallModule(moduleType:String, gc:Boolean = false):void {
 			
 			if (_destoryModuleLock[moduleType] == true) {
 				ToolsMain.log.warn("尝试卸载的模块([module]:" + moduleType + ")正在执行卸载。");

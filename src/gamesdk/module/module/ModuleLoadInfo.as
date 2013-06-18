@@ -34,8 +34,6 @@ package gamesdk.module.module {
 			this._progress = progress;
 		}
 		
-		/* INTERFACE module.core.IModuleLoadInfo */
-		
 		/**
 		 * @inheritDoc
 		 */

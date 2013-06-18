@@ -2,14 +2,14 @@ package gamesdk.module {
 	import flash.display.DisplayObject;
 	
 	import gamesdk.module.core.IModuleConfigManager;
-	import gamesdk.module.core.IModuleDataCenter;
+	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
 	import gamesdk.module.display.ScreenManager;
 	import gamesdk.module.module.ModuleBase;
 	import gamesdk.module.module.ModuleConfigManager;
-	import gamesdk.module.module.ModuleDataCenter;
+	import gamesdk.module.module.ModuleModelCenter;
 	import gamesdk.module.module.ModuleManager;
 	import gamesdk.module.module.RSLModuleManager;
 	import gamesdk.module.reflection.Reflector;
@@ -69,8 +69,8 @@ package gamesdk.module {
 		/**
 		 * 模块数据管理中心。
 		 */
-		public static function get dataCenter():IModuleDataCenter {
-			return ModuleDataCenter.instance;
+		public static function get dataCenter():IModuleModelCenter {
+			return ModuleModelCenter.instance;
 		}
 		
 		/**

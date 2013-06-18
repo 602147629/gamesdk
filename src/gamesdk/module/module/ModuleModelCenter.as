@@ -1,20 +1,20 @@
 package gamesdk.module.module {
 	import flash.utils.getQualifiedClassName;
 	
-	import gamesdk.module.core.IModuleDataCenter;
+	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.tools.ToolsMain;
 	
 	/**
 	 * 模块数据管理中心
 	 * @author hanxianming
 	 */
-	public class ModuleDataCenter implements IModuleDataCenter {
-		private static var _instance:IModuleDataCenter;
+	public class ModuleModelCenter implements IModuleModelCenter {
+		private static var _instance:IModuleModelCenter;
 		
 		private var _classFors:Object;
 		private var _useInstances:Object;
 		
-		public function ModuleDataCenter() {
+		public function ModuleModelCenter() {
 			init();
 		}
 		
@@ -23,9 +23,9 @@ package gamesdk.module.module {
 			_useInstances = {};
 		}
 		
-		public static function get instance():IModuleDataCenter {
+		public static function get instance():IModuleModelCenter {
 			if (_instance == null) {
-				_instance = new ModuleDataCenter();
+				_instance = new ModuleModelCenter();
 			}
 			return _instance;
 		}

@@ -1,7 +1,7 @@
 package gamesdk.module.display {
 	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModuleConfigManager;
-	import gamesdk.module.core.IModuleDataCenter;
+	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreen;
@@ -24,7 +24,7 @@ package gamesdk.module.display {
 		protected var $screenType:uint;
 		protected var $screenName:String;
 		protected var $fatherDisplay:DisplayObjectContainer;
-		protected var $dataCenter:IModuleDataCenter;
+		protected var $dataCenter:IModuleModelCenter;
 		protected var $moduleManager:IModuleManager;
 		protected var $configManager:IModuleConfigManager;
 		protected var $reflector:IReflector;

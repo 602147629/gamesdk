@@ -4,7 +4,7 @@ package gamesdk.module.module {
 	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModule;
 	import gamesdk.module.core.IModuleConfigManager;
-	import gamesdk.module.core.IModuleDataCenter;
+	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
@@ -24,7 +24,7 @@ package gamesdk.module.module {
 	 * @author hanxianming
 	 */
 	public class ModuleBase extends Sprite implements IModule {
-		protected var $dataCenter:IModuleDataCenter;
+		protected var $dataCenter:IModuleModelCenter;
 		protected var $moduleManager:IModuleManager;
 		protected var $configManager:IModuleConfigManager;
 		protected var $reflector:IReflector;

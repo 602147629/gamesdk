@@ -4,7 +4,7 @@ package gamesdk.module.core {
 	 * 模块数据管理中心
 	 * @author hanxianming
 	 */
-	public interface IModuleDataCenter {
+	public interface IModuleModelCenter {
 		/**
 		 * 注册数据层需要被创建的useinstanceClass和访问whenAskedFor的映射。
 		 * @param	whenAskedFor 对象的访问类型。

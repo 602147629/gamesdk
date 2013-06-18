@@ -18,7 +18,7 @@ package gamesdk.module.module {
 	import gamesdk.module.core.IModule;
 	import gamesdk.module.core.IModuleConfig;
 	import gamesdk.module.core.IModuleConfigManager;
-	import gamesdk.module.core.IModuleDataCenter;
+	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.module.core.IModuleLoadInfo;
 	import gamesdk.module.core.IModuleManager;
 	import gamesdk.module.core.IReflector;
@@ -36,7 +36,7 @@ package gamesdk.module.module {
 		
 		protected var _loadModules:Vector.<IModuleLoadInfo>;
 		protected var _moduleConfigManager:IModuleConfigManager;
-		protected var _moduleDataCenter:IModuleDataCenter;
+		protected var _moduleDataCenter:IModuleModelCenter;
 		protected var _reflector:IReflector;
 		protected var _destoryModuleLock:Object;
 		protected var _moduleMsgs:Object;
@@ -50,7 +50,7 @@ package gamesdk.module.module {
 			
 			_moduleConfigManager = ModuleConfigManager.instance;
 			_reflector = Reflector.instance;
-			_moduleDataCenter = ModuleDataCenter.instance;
+			_moduleDataCenter = ModuleModelCenter.instance;
 			_loadModules = new Vector.<IModuleLoadInfo>();
 			_destoryModuleLock = {};
 			_moduleMsgs = {};

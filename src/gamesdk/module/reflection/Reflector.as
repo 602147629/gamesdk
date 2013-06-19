@@ -36,9 +36,10 @@ package gamesdk.module.reflection {
 		 */
 		public function getDescribeType(obj:Object):XML {
 			var className:String = getQualifiedClassName(obj);
+			var cla:* = getDefinitionByName(className);
 			var typeXML:XML = _classXmlTypes[className];
 			if (typeXML == null) {
-				_classXmlTypes[className] = typeXML = describeType(obj);
+				_classXmlTypes[className] = typeXML = describeType(cla);
 			}
 			return typeXML;
 		}

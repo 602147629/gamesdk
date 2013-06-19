@@ -1,4 +1,5 @@
 package gamesdk.module.module {
+	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
 	import gamesdk.module.ModuleLauncher;
 	
@@ -100,7 +101,15 @@ package gamesdk.module.module {
 		 */
 		public function intoInjectObject(obj:Object):Object {
 			var typeXML:XML = ModuleLauncher.reflector.getDescribeType(obj);
-			for each (var node:XML in typeXML.*.(name() == 'variable' || name() == 'accessor').metadata.(@name == 'InjectData')) {
+			for each (node in typeXML.*.(name() == 'variable').metadata.(@name == 'InjectData')) {
+				propertyType = node.parent().@type.toString();
+				propertyName = node.parent().@name.toString();
+				injectionName = node.arg.attribute('value').toString();
+				var tempObj:Object = obj.constructor[propertyName] = getDataProxyByObject(ModuleLauncher.reflector.getDefinition(propertyType), injectionName);
+				intoInjectObject(tempObj);
+			}
+			
+			for each (var node:XML in typeXML.factory.*.(name() == 'variable' || name() == 'accessor').metadata.(@name == 'InjectData')) {
 				var propertyType:String = node.parent().@type.toString();
 				var propertyName:String = node.parent().@name.toString();
 				var injectionName:String = node.arg.attribute('value').toString();

@@ -330,7 +330,7 @@ package gamesdk.module.module {
 			if (msgs != null) {
 				var len:int = msgs.length;
 				for (var i:int = 0; i < len; i++) {
-					msgs[i].call(null, data);
+					msgs[i].call(null, msgType, data);
 				}
 			}
 		}

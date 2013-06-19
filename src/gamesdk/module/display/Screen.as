@@ -132,7 +132,5 @@ package gamesdk.module.display {
 		protected function switchScreen(screenType:uint, gc:Boolean = true):void {
 			$screenManager.switchScreen(screenType, gc);
 		}
-	
 	}
-
 }

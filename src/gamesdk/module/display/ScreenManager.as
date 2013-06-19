@@ -76,12 +76,16 @@ package gamesdk.module.display {
 		 * @inheritDoc
 		 */
 		public function switchScreen(screenType:uint, gc:Boolean = true):void {
-			if (curScreenType == screenType)
+			if (curScreenType == screenType) {
+				ToolsMain.log.info("需要跳转的屏幕和当前的屏幕相同。");
 				return;
+			}
 			
 			var screen:IScreen = getScreenById(screenType);
-			if (screen == null)
+			if (screen == null) {
+				ToolsMain.log.info("需要跳转的屏幕不存在。");
 				return;
+			}
 			
 			if (_curScreen != null) {
 				_curScreen.removeScreenFromParent();

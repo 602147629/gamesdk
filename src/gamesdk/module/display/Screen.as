@@ -1,4 +1,5 @@
 package gamesdk.module.display {
+	import gamesdk.module.constants.ScreenEventType;
 	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModuleConfigManager;
 	import gamesdk.module.core.IModuleModelCenter;
@@ -80,14 +81,14 @@ package gamesdk.module.display {
 		 * @inheritDoc
 		 */
 		public function show():void {
-		
+			registSwitchScreenEvent();
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function disposeScreen():void {
-		
+			removeSwitchScreenEvent();
 		}
 		
 		/**
@@ -122,6 +123,28 @@ package gamesdk.module.display {
 			$configManager = null;
 			$reflector = null;
 			$screenManager = null;
+		}
+		
+		/**
+		 * 接收到切换屏幕的事件。
+		 * @param	... arg
+		 */
+		protected function switchScreenEventHandler(... arg):void {
+		
+		}
+		
+		/**
+		 * 注册屏幕事件。
+		 */
+		protected function registSwitchScreenEvent():void {
+			ModuleLauncher.registerModuleMsg(ScreenEventType.SWITCH_SCREEN, switchScreenEventHandler);
+		}
+		
+		/**
+		 * 移除屏幕事件。
+		 */
+		protected function removeSwitchScreenEvent():void {
+			ModuleLauncher.deleteModuleMsg(ScreenEventType.SWITCH_SCREEN, switchScreenEventHandler);
 		}
 		
 		/**

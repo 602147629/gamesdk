@@ -112,8 +112,13 @@ package gamesdk.module.module {
 					ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
 				}
 			}
-			if (DisplayObject(module).parent != null)
-				DisplayObject(module).parent.removeChild(DisplayObject(module));
+			CONFIG::flash_display {
+				if (DisplayObject(module).parent != null)
+					DisplayObject(module).parent.removeChild(DisplayObject(module));
+			}
+			CONFIG::starling_display {
+				DisplayObject(module).removeFromParent(true);
+			}
 			if (gc)
 				ToolsMain.timer.doOnce(1000, ToolsMain.gc.gc);
 			

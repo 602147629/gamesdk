@@ -100,8 +100,13 @@ package gamesdk.module.display {
 		 * @inheritDoc
 		 */
 		public function removeScreenFromParent():void {
-			if (parent != null)
-				parent.removeChild(this);
+			CONFIG::flash_display {
+				if (parent != null)
+					parent.removeChild(this);
+			}
+			CONFIG::starling_display {
+				removeFromParent(true);
+			}
 		}
 		
 		/**
@@ -122,7 +127,7 @@ package gamesdk.module.display {
 			$reflector = null;
 			$screenManager = null;
 		}
-
+		
 		/**
 		 * 切换屏幕
 		 * @param	screenType 屏幕类型，需要自定义屏幕类型枚举。

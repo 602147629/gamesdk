@@ -1,0 +1,2 @@
+-define=CONFIG::flash_display,false
+-define=CONFIG::starling_display,true

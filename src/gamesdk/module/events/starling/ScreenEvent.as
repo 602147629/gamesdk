@@ -6,6 +6,7 @@ package gamesdk.module.events.starling {
 	 * @author hanxianming
 	 */
 	public class ScreenEvent extends Event {
+		/** 切换屏幕事件类型*/
 		public static const SWITCH_SCREEN:String = "switch_screen";
 		/** 自定义的屏幕类型*/
 		public var screenType:Object;

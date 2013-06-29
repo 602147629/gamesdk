@@ -6,7 +6,7 @@ package gamesdk.module.events.flash {
 	 * @author hanxianming
 	 */
 	public class ScreenEvent extends Event {
-		
+		/** 切换屏幕事件类型*/
 		public static const SWITCH_SCREEN:String = "switch_screen";
 		/** 切换屏幕传递的数据对象*/
 		public var data:Object;
@@ -25,7 +25,7 @@ package gamesdk.module.events.flash {
 		}
 		
 		override public function clone():Event {
-			return new ScreenEvent(screenType, data);
+			return new ScreenEvent(SWITCH_SCREEN, screenType, data);
 		}
 	
 	}

@@ -1,5 +1,4 @@
 package gamesdk.module.display {
-	import gamesdk.module.constants.ScreenEventType;
 	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModuleConfigManager;
 	import gamesdk.module.core.IModuleModelCenter;
@@ -22,7 +21,7 @@ package gamesdk.module.display {
 	 */
 	public class Screen extends Sprite implements IScreen {
 		
-		protected var $screenType:uint;
+		protected var $screenType:Object;
 		protected var $screenName:String;
 		protected var $fatherDisplay:DisplayObjectContainer;
 		protected var $modelCenter:IModuleModelCenter;
@@ -31,7 +30,7 @@ package gamesdk.module.display {
 		protected var $reflector:IReflector;
 		protected var $screenManager:IScreenManager;
 		
-		public function Screen(screenType:uint, screenName:String = "") {
+		public function Screen(screenType:Object, screenName:String = "") {
 			this.$screenType = screenType;
 			this.$screenName = screenName;
 			
@@ -47,11 +46,11 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function get screenType():uint {
+		public function get screenType():Object {
 			return $screenType;
 		}
 		
-		public function set screenType(value:uint):void {
+		public function set screenType(value:Object):void {
 			$screenType = value;
 		}
 		

@@ -12,7 +12,7 @@ package gamesdk.module.core {
 		/**
 		 * 当前正在显示的屏幕类型。
 		 */
-		function get curScreenType():uint;
+		function get curScreenType():Object;
 		/**
 		 * 获取所有可被显示的屏幕列表。
 		 */
@@ -22,13 +22,13 @@ package gamesdk.module.core {
 		 * @param	screenType 屏幕的类型定义，需自定义。
 		 * @return
 		 */
-		function getScreenById(screenType:uint):IScreen;
+		function getScreenById(screenType:Object):IScreen;
 		/**
 		 * 切换屏幕
 		 * @param	screenType 需要切换到的屏幕类型。
 		 * @param	gc 切换屏幕是否强制垃圾回收。
 		 */
-		function switchScreen(screenType:uint, gc:Boolean = true):void;
+		function switchScreen(screenType:Object, gc:Boolean = true):void;
 		/**
 		 * 添加一个屏幕。
 		 * @param	screen 自定义的屏幕。

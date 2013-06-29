@@ -1,5 +1,6 @@
 package gamesdk.module.module {
 	import flash.display.Loader;
+	import flash.events.Event;
 	
 	import gamesdk.module.ModuleLauncher;
 	import gamesdk.module.core.IModule;
@@ -11,10 +12,12 @@ package gamesdk.module.module {
 	import gamesdk.tools.ToolsMain;
 	
 	CONFIG::flash_display {
+		import gamesdk.module.events.flash.ScreenEvent;
 		import flash.display.DisplayObjectContainer;
 		import flash.display.Sprite;
 	}
 	CONFIG::starling_display {
+		import gamesdk.module.events.starling.ScreenEvent;
 		import starling.display.DisplayObjectContainer;
 		import starling.display.Sprite;
 	}
@@ -39,6 +42,15 @@ package gamesdk.module.module {
 			$reflector = ModuleLauncher.reflector;
 			$screenManager = ModuleLauncher.screenManager;
 			$moduleType = moduleType;
+			this.addEventListener(ScreenEvent.SWITCH_SCREEN, switchScreenHandler);
+		}
+		
+		/**
+		 * 模块内部接收切换屏幕事件，具体的切换屏幕逻辑请重写。
+		 * @param	e
+		 */
+		protected function switchScreenHandler(e:ScreenEvent):void {
+			$screenManager.switchScreen(e.screenType, true);
 		}
 		
 		/**
@@ -93,6 +105,7 @@ package gamesdk.module.module {
 			$reflector = null;
 			$screenManager = null;
 			$loader = null;
+			this.removeEventListener(ScreenEvent.SWITCH_SCREEN, switchScreenHandler);
 		}
 		
 		/**

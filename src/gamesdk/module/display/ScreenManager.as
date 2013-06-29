@@ -46,7 +46,7 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function get curScreenType():uint {
+		public function get curScreenType():Object {
 			if (_curScreen == null)
 				return 0;
 			return _curScreen.screenType;
@@ -62,7 +62,7 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function getScreenById(screenType:uint):IScreen {
+		public function getScreenById(screenType:Object):IScreen {
 			var len:int = _screens.length
 			for (var i:int = 0; i < len; i++) {
 				if (screenType == _screens[i].screenType) {
@@ -75,7 +75,7 @@ package gamesdk.module.display {
 		/**
 		 * @inheritDoc
 		 */
-		public function switchScreen(screenType:uint, gc:Boolean = true):void {
+		public function switchScreen(screenType:Object, gc:Boolean = true):void {
 			if (curScreenType == screenType) {
 				ToolsMain.log.info("需要跳转的屏幕和当前的屏幕相同。");
 				return;

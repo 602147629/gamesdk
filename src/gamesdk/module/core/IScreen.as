@@ -11,8 +11,8 @@ package gamesdk.module.core {
 	 * @author hanxianming
 	 */
 	public interface IScreen {
-		function get screenType():uint;
-		function set screenType(value:uint):void;
+		function get screenType():Object;
+		function set screenType(value:Object):void;
 		function get screenName():String;
 		function set screenName(value:String):void;
 		function get fatherDisplay():DisplayObjectContainer;

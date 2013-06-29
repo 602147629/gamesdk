@@ -75,12 +75,6 @@ package gamesdk.module.module {
 				ToolsMain.log.error("[module]" + moduleType + "不能被添加到空对象中。");
 				return;
 			}
-			/*var child:* = this;
-			   if (GlobalsVars.dynamicLoad) {
-			   child = $loader;
-			   } else {
-			   child = this;
-			 }*/
 			if (index == -1) {
 				father.addChild(this);
 			} else {

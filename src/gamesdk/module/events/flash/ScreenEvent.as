@@ -25,7 +25,7 @@ package gamesdk.module.events.flash {
 		}
 		
 		override public function clone():Event {
-			return new ScreenEvent(SWITCH_SCREEN, screenType, data);
+			return new ScreenEvent(screenType, data);
 		}
 	
 	}

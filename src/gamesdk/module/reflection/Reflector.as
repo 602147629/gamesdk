@@ -36,7 +36,7 @@ package gamesdk.module.reflection {
 		 */
 		public function getDescribeType(obj:Object):XML {
 			var className:String = getQualifiedClassName(obj);
-			var cla:* = getDefinitionByName(className);
+			var cla:* = getClass(obj);
 			var typeXML:XML = _classXmlTypes[className];
 			if (typeXML == null) {
 				_classXmlTypes[className] = typeXML = describeType(cla);
@@ -129,7 +129,6 @@ package gamesdk.module.reflection {
 			var fqcn:String;
 			if (value is String) {
 				fqcn = value;
-				// Add colons if missing and desired.
 				if (!replaceColons && fqcn.indexOf('::') == -1) {
 					var lastDotIndex:int = fqcn.lastIndexOf('.');
 					if (lastDotIndex == -1)

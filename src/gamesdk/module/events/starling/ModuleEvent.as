@@ -21,7 +21,6 @@ package gamesdk.module.events.starling {
 		 * @param	data 模块控制事件可传递的数据对象。
 		 */
 		public function ModuleEvent(type:String, moduleType:String, gc:Boolean = false, data:Object = null) {
-			this.data = data;
 			this.moduleType = moduleType;
 			super(type, true, data);
 		

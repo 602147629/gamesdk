@@ -7,10 +7,12 @@ package gamesdk.module.display {
 	import gamesdk.module.core.IScreen;
 	import gamesdk.module.core.IScreenManager;
 	CONFIG::flash_display {
+		import gamesdk.module.events.flash.ModuleEvent;
 		import flash.display.DisplayObjectContainer;
 		import flash.display.Sprite;
 	}
 	CONFIG::starling_display {
+		import gamesdk.module.events.starling.ModuleEvent;
 		import starling.display.DisplayObjectContainer;
 		import starling.display.Sprite;
 	}
@@ -41,6 +43,24 @@ package gamesdk.module.display {
 			$screenManager = ModuleLauncher.screenManager;
 			
 			$screenManager.addScreen(this);
+			
+			addEventListener(ModuleEvent.INSTALL_MODULE, installModuleHandler);
+			addEventListener(ModuleEvent.UNINSTALL_MODULE, uninstallModuleHandler);
+		}
+		
+		/**
+		 * 接收到模块子对象的请求卸载模块事件,具体逻辑可重写此方法。
+		 * @param	e
+		 */
+		protected function uninstallModuleHandler(e:ModuleEvent):void {
+			$moduleManager.uninstallModule(e.moduleType, true);
+		}
+		
+		/**
+		 * 接收到模块子对象的请求安装模块事件,具体逻辑需要重写此方法。
+		 * @param	e
+		 */
+		protected function installModuleHandler(e:ModuleEvent):void {
 		}
 		
 		/**
@@ -86,6 +106,8 @@ package gamesdk.module.display {
 		 * @inheritDoc
 		 */
 		public function disposeScreen():void {
+			removeEventListener(ModuleEvent.INSTALL_MODULE, installModuleHandler);
+			removeEventListener(ModuleEvent.UNINSTALL_MODULE, uninstallModuleHandler);
 		}
 		
 		/**

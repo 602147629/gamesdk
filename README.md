@@ -17,7 +17,9 @@ gamesdk
 
 -define=CONFIG::starling_display,false
 
+
 特点：
+
    1.可进行动态加载模块和非动态加载模块。
    
    2.支持flash显示对象和starling显示对象双版本。

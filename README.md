@@ -6,7 +6,7 @@ gamesdk
 分模块+RSL开发框架；使用源码编译请使用编译参数。
 
 如果为starling版本：
--define=CONFIG::flash_display,false
+-define=CONFIG::flash_display,false\n
 -define=CONFIG::starling_display,true
 
 如果为flash版本：

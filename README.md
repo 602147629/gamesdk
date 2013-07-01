@@ -8,12 +8,18 @@ gamesdk
 如果为starling版本的编译参数：
 
 -define=CONFIG::flash_display,false
+
 -define=CONFIG::starling_display,true
+
+
 
 如果为flash版本的编译参数：
 
 -define=CONFIG::flash_display,true
+
 -define=CONFIG::starling_display,false
+
+
 
 
 特点：

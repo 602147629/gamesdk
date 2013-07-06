@@ -1,5 +1,7 @@
 package gamesdk.module {
+	import app.cmd.RobotlegsInstallCommand;
 	import flash.display.DisplayObject;
+	import gamesdk.module.core.IExtendCommand;
 	
 	import gamesdk.module.core.IModuleConfigManager;
 	import gamesdk.module.core.IModuleModelCenter;
@@ -28,11 +30,31 @@ package gamesdk.module {
 	 * @author hanxianming
 	 */
 	public class ModuleLauncher {
+		private static var _frameWorks:Object = {};
+		
 		public function ModuleLauncher() {
 		}
 		
 		/**
-		 * 模块启动
+		 * 安装三方框架入口引用。
+		 * @param	frameWorkName 框架的名称。
+		 * @param	frameWork 框架的入口引用。
+		 */
+		public static function installFrameWork(frameWorkName:String, frameWork:Object):void {
+			_frameWorks[frameWorkName] = frameWork;
+		}
+		
+		/**
+		 * 得到安装的三方框架入口引用。
+		 * @param	frameWorkName
+		 * @return
+		 */
+		public static function frameWorkInlet(frameWorkName:String):Object {
+			return _frameWorks[frameWorkName];
+		}
+		
+		/**
+		 * 模块启动.
 		 * @param	root 根显示对象，必须为应用程序的主入口。
 		 * @param	moduleConfig 模块配置文件，可以为XML配置，也可以为一个URL字符串地址。
 		 * @param	launcherComplete  模块启动完成。
@@ -166,6 +188,21 @@ package gamesdk.module {
 		 */
 		public static function switchScreen(screenType:uint, gc:Boolean = true):void {
 			screenManager.switchScreen(screenType, gc);
+		}
+		
+		/**
+		 * 执行安装的CMD命令，需要实现IExtendCommand接口，也可以继承ExtendCommand，复写execute方法。
+		 * @param	... cmds
+		 */
+		public static function executeCommand(... cmds):void {
+			var len:int = cmds.length;
+			for (var i:int = 0; i < len; i++) {
+				if (cmds[i] is Class) {
+					IExtendCommand(new cmds[i]()).execute();
+				} else {
+					IExtendCommand(cmds[i]).execute();
+				}
+			}
 		}
 	}
 }

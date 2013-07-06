@@ -125,6 +125,15 @@ package gamesdk.module.module {
 		public function set loader(value:Loader):void {
 			$loader = value;
 		}
+		
+		/**
+		 * 获取安装的扩展框架
+		 * @param	frameWorkName
+		 * @return
+		 */
+		public function frameWorkInlet(frameWorkName:String):Object {
+			return ModuleLauncher.frameWorkInlet(frameWorkName);
+		}
 	
 	}
 

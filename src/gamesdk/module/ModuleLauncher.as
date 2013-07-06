@@ -1,18 +1,17 @@
 package gamesdk.module {
-	import app.cmd.RobotlegsInstallCommand;
 	import flash.display.DisplayObject;
-	import gamesdk.module.core.IExtendCommand;
 	
+	import gamesdk.module.core.IExtendCommand;
 	import gamesdk.module.core.IModuleConfigManager;
-	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.module.core.IModuleManager;
+	import gamesdk.module.core.IModuleModelCenter;
 	import gamesdk.module.core.IReflector;
 	import gamesdk.module.core.IScreenManager;
 	import gamesdk.module.display.ScreenManager;
 	import gamesdk.module.module.ModuleBase;
 	import gamesdk.module.module.ModuleConfigManager;
-	import gamesdk.module.module.ModuleModelCenter;
 	import gamesdk.module.module.ModuleManager;
+	import gamesdk.module.module.ModuleModelCenter;
 	import gamesdk.module.module.RSLModuleManager;
 	import gamesdk.module.reflection.Reflector;
 	import gamesdk.tools.ToolsMain;
